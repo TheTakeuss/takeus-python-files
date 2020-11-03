@@ -5,6 +5,7 @@ from random import randint
 #Variables
 choice = ""
 debug = False
+affichage = 1
 
 #def
 def screen():
@@ -17,7 +18,8 @@ sleep(0.5)
 while True:
     screen()
     print("1 - Révision")
-    print("2 - Jeux\n")
+    print("2 - Jeux")
+    print("3 - Configuration\n")
     choice = input("> ")
     if choice == "1":
         while True:
@@ -60,11 +62,18 @@ while True:
                 choice = input("> (enter)/(quit) ").lower()
                 if choice == "quit":
                     break
+
+    if choice == "":
+        print("")
     if choice == "2" and debug == True:
         while True:
             print("ok")
-            
     
+    if choice == "3" and debug == True:
+        while True:
+            screen()
+            print("C1 =", affichage, "\n(1 = [10, 20, ...] | 2 = 1X10=10,2X10=20,...)\n")
+            choice = input("> (choisissez un paramètre à modifier (exemple: C1) ")
     else:
         print("Fonctionnalité en developpement/Non Trouvé")
         sleep(1.5)
