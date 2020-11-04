@@ -4,7 +4,7 @@ from random import randint
 
 #Variables
 choice = ""
-debug = True
+debug = False
 
 #def
 def screen():
