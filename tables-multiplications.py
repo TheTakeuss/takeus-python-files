@@ -4,22 +4,22 @@ from random import randint
 
 #Variables
 choice = ""
-debug = False
-affichage = 1
+debug = True
 
 #def
 def screen():
     system('cls')
     print("\n\n--------------------------\n|Tables de Multiplication|\n--------------------------\n")
 screen()
-print("-Veuillez mettre 'la fenètre en grand'\n-Très Très simple\n")
+print("-Veuillez mettre 'la fenètre en grand'\n-Très Très simple\n-Le code n'est pas optimisé (il me semble)\n")
 input("> (enter) ")
 sleep(0.5)
 while True:
     screen()
     print("1 - Révision")
     print("2 - Jeux")
-    print("3 - Configuration\n")
+    print("3 - Configuration")
+    print("4 - Quitter\n")
     choice = input("> ")
     if choice == "1":
         while True:
@@ -58,23 +58,52 @@ while True:
                     print("Table de 9", [i for i in range (8, 91) if i % 9 == 0])
                     print("Table de 10", [i for i in range (9, 101) if i % 10 == 0], "\n")
                 else:
-                    print("Vous avez entrer une valeur invalide !")
+                    print("Vous avez entré une valeur invalide !")
                 choice = input("> (enter)/(quit) ").lower()
                 if choice == "quit":
                     break
 
-    if choice == "":
-        print("")
-    if choice == "2" and debug == True:
+    if choice == "2":
+        score = 0
+        value1 = 0
+        value2 = 0
+        user_number = 0
         while True:
-            print("ok")
+            screen()
+            print("Votre Score:", score, "\n")
+            value1 = randint(0,11)
+            value2 = randint(0,11)
+            print(value1, "X", value2)
+            user_number = input("= ? ")
+            try:
+                int(user_number)
+            except:
+                print("Caractère invalide !")
+                sleep(1)
+                user_number = 1000
+            user_number = int(user_number)
+            if user_number == value1*value2:
+                print("\nJuste ! ")
+                score = score + 1
+                sleep(1)
+            else:
+                print("Mauvaise Réponse !")
+                sleep(1)
+            
     
     if choice == "3" and debug == True:
         while True:
             screen()
-            print("C1 =", affichage, "\n(1 = [10, 20, ...] | 2 = 1X10=10,2X10=20,...)\n")
-            choice = input("> (choisissez un paramètre à modifier (exemple: C1) ")
+            print("EN DEV RIEN")
+            sleep(1.5)
+            break
+    if choice == "4":
+        screen()
+        print("Fermeture du programme...")
+        sleep(1.5)
+        break
+
     else:
-        print("Fonctionnalité en developpement/Non Trouvé")
+        print("Non Trouver/Non Disponible")
         sleep(1.5)
                 
