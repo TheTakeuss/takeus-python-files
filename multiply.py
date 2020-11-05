@@ -70,9 +70,18 @@ while True:
         user_number = 0
         while True:
             screen()
-            print("Votre Score:", score, "\n")
-            value1 = randint(1,11)
-            value2 = randint(1,11)
+            if score <= 10:
+                print("Votre Score:", str(score)+"/10", "\n")
+            else:
+                print("Votre Score:", str(score), "\n")
+            if score == 10:
+                print("Vous avez gagné")
+                choice = input("\nSouhaitez-vous continuer ? (O/N)").lower()
+                if choice == "n":
+                    sleep(0.5)
+                    break
+            value1 = randint(1,10)
+            value2 = randint(1,10)
             print(value1, "X", value2)
             user_number = input("= ? ")
             try:
@@ -89,14 +98,6 @@ while True:
             else:
                 print("Mauvaise Réponse !\n la réponse est", value1 * value2)
                 sleep(1)
-            if score == 10:
-                print("Vous avez gagné")
-                choice = input("Souhaitez-vous continuer ? (O/N)").lower()
-                if choice == "n":
-                    sleep(1)
-                    break
-                sleep(1.5)
-                break
             
     
     if choice == "3" and debug == True:
