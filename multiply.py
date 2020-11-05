@@ -87,8 +87,16 @@ while True:
                 score = score + 1
                 sleep(1)
             else:
-                print("Mauvaise Réponse !")
+                print("Mauvaise Réponse !\n la réponse est", value1 * value2)
                 sleep(1)
+            if score == 10:
+                print("Vous avez gagné")
+                choice = input("Souhaitez-vous continuer ? (O/N)").lower()
+                if choice == "n":
+                    sleep(1)
+                    break
+                sleep(1.5)
+                break
             
     
     if choice == "3" and debug == True:
