@@ -9,7 +9,7 @@ debug = False
 #def
 def screen():
     system('cls')
-    print("\n\n--------------------------\n|Tables de Multiplication|\n--------------------------\n")
+    print("\n\n--------------\n|MultiplyGame|\n--------------\n")
 screen()
 print("-Veuillez mettre 'la fenètre en grand'\n-Très Très simple\n-Le code n'est pas optimisé (il me semble)\n")
 input("> (enter) ")
@@ -71,8 +71,8 @@ while True:
         while True:
             screen()
             print("Votre Score:", score, "\n")
-            value1 = randint(0,11)
-            value2 = randint(0,11)
+            value1 = randint(1,11)
+            value2 = randint(1,11)
             print(value1, "X", value2)
             user_number = input("= ? ")
             try:
