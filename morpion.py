@@ -5,6 +5,7 @@ from random import randint
 # Variables
 comput_status = False
 win = False
+egal = False
 
 temp = 0
 
@@ -42,8 +43,8 @@ error_type = 0
 os.system('cls')
 print("\n------------\nMorpion Game\n------------\n")
 print("- Il est préférable de jouer avec le terminal de votre IDE 'en grand'")
-print("- Vous devrez chosiri votre 'case' par le biais de numéro de 1 à 9...")
-print("- Jeu du morpion, un grand classique des jeux en permanence au collège\n")
+print("- Vous devrez choisir votre 'case' par le biais de numéro de 1 à 9...")
+print("- Si la partie est bloquer, ecrivez 'egalite'\n")
 player_token = str(input("Votre Signe: (X/O) ").upper())
 if player_token == "X" or player_token == "O":
     if player_token == "X":
@@ -86,15 +87,26 @@ while game_start == True:
         print(terrain)
     #Player
     while True:
-        player_choice = input("Case: (1-9) ")
+        player_choice = input("Case: (1-9) ").lower()
         try:
             int(player_choice)
         except:
-            error_type = 2
+            if player_choice == "egalite":
+                egal = True
+                win = True
+                break
+            else:
+                error_type = 2
+                print("Erreur, code", error_type)
+                time.sleep(0.5)
+                break
+        
+        player_choice = int(player_choice)
+        if player_choice < 1 or player_choice > 9:
+            error_type = 3
             print("Erreur, code", error_type)
             time.sleep(0.5)
             break
-        player_choice = int(player_choice)
 
         if terrain[player_choice-1] == comput_token:
             print("\nLa case est déjà rempli, veuillez refaire...\n\n")
@@ -163,7 +175,6 @@ while game_start == True:
             break
         
     #Score
-    win = False
     #Lignes
     if A1 == A2 == A3 and A1 !=' ':
         win=True
@@ -216,8 +227,7 @@ while game_start == True:
         else:
             comput_score+=1
     #Egalité
-        #Pas fini
-    
+
     #CheckPoint
     if win:
         os.system('cls')
@@ -231,10 +241,13 @@ while game_start == True:
         print("−−−−−−−−−−−−−\n")
         if debug_mode == True:
             print(terrain)
-        if player_score > comput_score:
-            print("\n\nVous avez Gagné")
+        if egal == True:
+            print("\n\nVous avez égalité")
         else:
-            print("\n\nVous avez Perdu")
+            if player_score > comput_score:
+                print("\n\nVous avez Gagné")
+            else:
+                print("\n\nVous avez Perdu")
         print("Ordinateur :", comput_score)
         print("Vous :", player_score, "\n\n")
         time.sleep(1)
@@ -243,9 +256,11 @@ while game_start == True:
         elif comput_score == game_lenght:
             break
         answer = input("Voulez-vous continuer ? (O/N)").upper()
-        if answer == "O":
+        if answer == "O" or "":
             print("\nLa partie continue")
             time.sleep(0.5)
+            win = False
+            egal = False
             A1 = " "
             A2 = " "
             A3 = " "
@@ -270,8 +285,7 @@ while game_start == True:
         else:
             break
 print("Fin de Partie")
-
-        
+time.sleep(1)
 
             
 
