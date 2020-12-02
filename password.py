@@ -11,8 +11,10 @@ lettre = ["a", "z", "e", "r", "t", "y", "u", "i", "o", "p", "q", "s", "d", "f", 
 Caraspe = ["&", "#", "{", "}", "(", ")", "/", "@", "|", "[", "]", ":", ";", "?", ".", "!"]
 nombre = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 password = ""
+os.system('cls')
+print("--------------------\n|Password Generator|\n--------------------\n")
 
-temp = input("Longueur: ")
+temp = input("Longueur: (default=8) ")
 try:
     int(temp)
 except:
@@ -58,9 +60,6 @@ for passw in range(long):
     if opt1 == False and opt2 == False:
         password = password + lettre[randint(0, len(lettre) - 1)]
         
-
-
-
-
-print("Password:", password)
+print("\n\nPassword:", password)
+input("\n(quit)")
 
