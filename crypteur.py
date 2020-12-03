@@ -184,25 +184,28 @@ if temp == "1":
     print("generating.")
     time.sleep(temp3)
     os.system('cls')
-    print("generating..")
-    time.sleep(temp3)
-    os.system('cls')
-    print("generating...")
-    os.system('cls')
-    time.sleep(temp3)
-    os.system('cls')
-    print("----------\n|Encrypter|\n----------\n")
-    for lettre in message:
-        temp = data_encoded.get(lettre)
-        temp3 = randint(0,1)
-        if temp3 == 1:
-            encoded_message = encoded_message + code[randint(1,len(code) - 1)]
-            encoded_message = encoded_message + temp
-        else:
-            encoded_message = encoded_message + temp
-    print("result:", encoded_message)
-    input("\n> (quit)")
-
+    try: 
+        for lettre in message:
+            temp = data_encoded.get(lettre)
+            temp3 = randint(0,1)
+            if temp3 == 1:
+                encoded_message = encoded_message + code[randint(1,len(code) - 1)]
+                encoded_message = encoded_message + temp
+            else:
+                encoded_message = encoded_message + temp
+        print("generating..")
+        time.sleep(temp3)
+        os.system('cls')
+        print("generating...")
+        os.system('cls')
+        time.sleep(temp3)
+        os.system('cls')
+        print("----------\n|Encrypter|\n----------\n")
+        print("result:", encoded_message)
+        input("\n> (quit)")
+    except:
+        print("\nError, Invalid character(s) detected...")
+        input("\n> (quit)")
 
 elif temp == "2":
     os.system('cls')
@@ -217,20 +220,25 @@ elif temp == "2":
     print("decoding.")
     time.sleep(temp3)
     os.system('cls')
-    print("decoding..")
-    time.sleep(temp3)
-    os.system('cls')
-    print("decoding...")
-    os.system('cls')
-    time.sleep(temp3)
-    os.system('cls')
-    print("----------\n|Encrypter|\n----------\n")
-    for lettre in encoded_message:
-        temp = data_decoded.get(lettre)
-        if lettre not in code:
-            message = message + temp
-    print("\nmessage:", message)
-    input("\n> (quit)")
+    try:
+        for lettre in encoded_message:
+            temp = data_decoded.get(lettre)
+            if lettre not in code:
+                message = message + temp
+        print("decoding..")
+        time.sleep(temp3)
+        os.system('cls')
+        print("decoding...")
+        os.system('cls')
+        time.sleep(temp3)
+        os.system('cls')
+        print("----------\n|Encrypter|\n----------\n")
+        print("\nmessage:", message)
+        input("\n> (quit)")          
+    except:
+        print("\nError, Unable to decrypt the message...")
+        input("\n> (quit)")
+
 
 
 elif temp == "3":
