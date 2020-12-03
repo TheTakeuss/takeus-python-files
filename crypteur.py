@@ -84,7 +84,8 @@ data_encoded = {
 "-": "'",
 "(": "è",
 ")": "é",
-":": "%"}
+":": "%",
+",": "§"}
 data_decoded = {
 "n": "a", 
 "b": "z", 
@@ -158,7 +159,8 @@ data_decoded = {
 "'": "-",
 "é": ")",
 "è": "(",
-"%": ":"}
+"%": ":",
+"§": ","}
 
 code = ["(", "[", "{", "$", "|", "-", "_",  "#", "=", "&", "/", "}", "]", ")"]
 
@@ -173,11 +175,11 @@ if temp == "1":
     print("----------\n|Encrypter|\n----------\n")
     message = input("message: ")
     if len(message) >= 10:
-        temp3 = 1.5
-    elif len(message) >= 6:
         temp3 = 1
-    else:
+    elif len(message) >= 6:
         temp3 = 0.5
+    else:
+        temp3 = 0.25
     os.system('cls')
     print("generating.")
     time.sleep(temp3)
@@ -205,6 +207,24 @@ if temp == "1":
 elif temp == "2":
     os.system('cls')
     encoded_message = input("Encoded Message: ")
+    if len(encoded_message) >= 15:
+        temp3 = 1
+    elif len(encoded_message) >= 10:
+        temp3 = 0.5
+    else:
+        temp3 = 0.25
+    os.system('cls')
+    print("decoding.")
+    time.sleep(temp3)
+    os.system('cls')
+    print("decoding..")
+    time.sleep(temp3)
+    os.system('cls')
+    print("decoding...")
+    os.system('cls')
+    time.sleep(temp3)
+    os.system('cls')
+    print("----------\n|Encrypter|\n----------\n")
     for lettre in encoded_message:
         temp = data_decoded.get(lettre)
         if lettre not in code:
