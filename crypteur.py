@@ -117,6 +117,7 @@ if temp == "1":
         else:
             encoded_message = encoded_message + temp
     print(encoded_message)
+    input("> (quit)")
 
 
 elif temp == "2":
@@ -127,6 +128,7 @@ elif temp == "2":
         if lettre not in code:
             message = message + temp
     print(message)
+    input("> (quit)")
 
 
 elif temp == "3":
