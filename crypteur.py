@@ -216,7 +216,7 @@ elif temp == "2":
 elif temp == "3":
     while True:
         os.system('cls')
-        temp = input("Lettre:")
+        temp = input("Letter:")
         print(data_encoded.get(temp))
         temp = input("\n> Continue? (Y/N) ").lower()
         if temp != "y":
