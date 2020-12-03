@@ -165,12 +165,31 @@ code = ["(", "[", "{", "$", "|", "-", "_",  "#", "=", "&", "/", "}", "]", ")"]
 
 #Programme
 os.system('cls')
-print("----------\n|Crypteur|\n----------\n")
+print("----------\n|Encrypter|\n----------\n")
 print("1 - Encode\n2 - Decode\n3 - Lists\n4 - quit\n\n")
 temp = input("> ")
 if temp == "1":
     os.system('cls')
-    message = input("Votre message: ")
+    print("----------\n|Encrypter|\n----------\n")
+    message = input("message: ")
+    if len(message) >= 10:
+        temp3 = 1.5
+    elif len(message) >= 6:
+        temp3 = 1
+    else:
+        temp3 = 0.5
+    os.system('cls')
+    print("generating.")
+    time.sleep(temp3)
+    os.system('cls')
+    print("generating..")
+    time.sleep(temp3)
+    os.system('cls')
+    print("generating...")
+    os.system('cls')
+    time.sleep(temp3)
+    os.system('cls')
+    print("----------\n|Encrypter|\n----------\n")
     for lettre in message:
         temp = data_encoded.get(lettre)
         temp3 = randint(0,1)
@@ -179,19 +198,19 @@ if temp == "1":
             encoded_message = encoded_message + temp
         else:
             encoded_message = encoded_message + temp
-    print(encoded_message)
-    input("> (quit)")
+    print("result:", encoded_message)
+    input("\n> (quit)")
 
 
 elif temp == "2":
     os.system('cls')
-    encoded_message = input("Votre message encoded: ")
+    encoded_message = input("Encoded Message: ")
     for lettre in encoded_message:
         temp = data_decoded.get(lettre)
         if lettre not in code:
             message = message + temp
-    print(message)
-    input("> (quit)")
+    print("\nmessage:", message)
+    input("\n> (quit)")
 
 
 elif temp == "3":
