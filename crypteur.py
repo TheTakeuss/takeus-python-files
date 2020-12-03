@@ -38,6 +38,34 @@ data_encoded = {
 "v": "e",
 "b": "z",
 "n": "a",
+
+"A": "N", 
+"Z": "B", 
+"E": "V", 
+"R": "C", 
+"T": "X", 
+"Y": "W",
+"U": "M",
+"I": "L",
+"O": "K",
+"P": "J",
+"Q": "H",
+"S": "G",
+"D": "F",
+"F": "D",
+"G": "S",
+"H": "Q",
+"J": "P",
+"K": "O",
+"L": "I",
+"M": "U",
+"W": "Y",
+"X": "T",
+"C": "R",
+"V": "E",
+"B": "Z",
+"N": "A",
+
 " ": ".",
 "?": "*",
 ".": "^",
@@ -52,8 +80,10 @@ data_encoded = {
 "7": "1",
 "8": "0",
 "9": "6",
-"0": "8"}
-
+"0": "8",
+"-": "'",
+"(": "è",
+")": "é"}
 data_decoded = {
 "n": "a", 
 "b": "z", 
@@ -81,6 +111,34 @@ data_decoded = {
 "e": "v",
 "z": "b",
 "a": "n",
+
+"N": "A", 
+"B": "Z", 
+"V": "E", 
+"C": "R", 
+"X": "T", 
+"W": "Y",
+"M": "U",
+"L": "I",
+"K": "O",
+"J": "P",
+"H": "Q",
+"G": "S",
+"F": "D",
+"D": "F",
+"S": "G",
+"Q": "H",
+"P": "J",
+"O": "K",
+"I": "L",
+"U": "M",
+"Y": "W",
+"T": "X",
+"R": "C",
+"E": "V",
+"Z": "B",
+"A": "N",
+
 ".": " ",
 "*": "?",
 "^": ".",
@@ -95,7 +153,10 @@ data_decoded = {
 "1": "7",
 "0": "8",
 "6": "9",
-"8": "0"}
+"8": "0",
+"'": "-",
+"é": ")",
+"è": "("}
 
 code = ["(", "[", "{", "$", "|", "-", "_", "#", "=", "&", "/", "}", "]", ")"]
 
@@ -103,11 +164,11 @@ code = ["(", "[", "{", "$", "|", "-", "_", "#", "=", "&", "/", "}", "]", ")"]
 #Programme
 os.system('cls')
 print("----------\n|Crypteur|\n----------\n")
-print("1 - Encode\n2 - Decode\n3 - dico\n4 - quit\n\n")
+print("1 - Encode\n2 - Decode\n3 - Lists\n4 - quit\n\n")
 temp = input("> ")
 if temp == "1":
     os.system('cls')
-    message = input("Votre message: ").lower()
+    message = input("Votre message: ")
     for lettre in message:
         temp = data_encoded.get(lettre)
         temp3 = randint(0,2)
@@ -132,9 +193,14 @@ elif temp == "2":
 
 
 elif temp == "3":
-    os.system('cls')
-    temp = input("Lettre:")
-    print(data_encoded.get(temp))
+    while True:
+        os.system('cls')
+        temp = input("Lettre:")
+        print(data_encoded.get(temp))
+        temp = input("\n> Continue? (Y/N) ").lower()
+        if temp != "y":
+            break
+
 else:
     quit
 
