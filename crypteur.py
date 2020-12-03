@@ -83,7 +83,8 @@ data_encoded = {
 "0": "8",
 "-": "'",
 "(": "è",
-")": "é"}
+")": "é",
+":": "%"}
 data_decoded = {
 "n": "a", 
 "b": "z", 
@@ -156,9 +157,10 @@ data_decoded = {
 "8": "0",
 "'": "-",
 "é": ")",
-"è": "("}
+"è": "(",
+"%": ":"}
 
-code = ["(", "[", "{", "$", "|", "-", "_", "#", "=", "&", "/", "}", "]", ")"]
+code = ["(", "[", "{", "$", "|", "-", "_",  "#", "=", "&", "/", "}", "]", ")"]
 
 
 #Programme
@@ -171,7 +173,7 @@ if temp == "1":
     message = input("Votre message: ")
     for lettre in message:
         temp = data_encoded.get(lettre)
-        temp3 = randint(0,2)
+        temp3 = randint(0,1)
         if temp3 == 1:
             encoded_message = encoded_message + code[randint(1,len(code) - 1)]
             encoded_message = encoded_message + temp
