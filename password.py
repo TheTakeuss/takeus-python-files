@@ -13,7 +13,7 @@ password = ""
 os.system('cls')
 print("--------------------\n|Password Generator|\n--------------------\n")
 
-temp = input("Longueur: (default=8) ")
+temp = input("Length: (default=8) ")
 try:
     int(temp)
 except:
@@ -22,12 +22,12 @@ except:
 long = int(temp)
 if long <= 3:
     long = 8
-temp = input("Caractères Spéciaux: (Y/N)").upper()
+temp = input("Special characters: (Y/N)").upper()
 if temp == "Y":
     opt1 = True
 else:
     opt1 = False
-temp = input("Nombre: (Y/N)").upper()
+temp = input("Numbers: (Y/N)").upper()
 if temp == "Y":
     opt2 = True
 else:
