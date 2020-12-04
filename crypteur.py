@@ -9,7 +9,7 @@ encoded_message = ""
 temp = ""
 temp2 = ""
 temp3 = 0
-v2 = ""
+message2 = ""
 
 # DICTIONNAIRE
 data_encoded = {
@@ -170,7 +170,7 @@ codel = ["A", "g", "K", "P", "d", "P", "Z",  "r", "o", "h", "s", "l", "g", "v"]
 #Programme
 os.system('cls')
 print("----------\n|Encrypter|\n----------\n")
-print("1 - Encode\n2 - Decode\n3 - Lists\n4 - MoreSecureMode (IN DEV)\n5 - quit\n\n")
+print("1 - Encode\n2 - Decode\n3 - MoreSecureMode\n4 - quit\n\n")
 temp = input("> ")
 if temp == "1":
     os.system('cls')
@@ -243,22 +243,17 @@ elif temp == "2":
 
 
 
+#More secure Mode
 elif temp == "3":
-    while True:
-        os.system('cls')
-        temp = input("Letter:")
-        print(data_encoded.get(temp))
-        temp = input("\n> Continue? (Y/N) ").lower()
-        if temp != "y":
-            break
-
-elif temp == "4":
-    print("----------\n|Encrypter|\n----------\n1 - Encode\n2 - Decode\n3 - Quit")
+    os.system('cls')
+    print("----------\n|Encrypter|\n----------\nMoreSecureMode\n\n1 - Encode\n2 - Decode\n3 - Quit")
     temp = input("> ")
+
+    #Encode
     if temp == "1":
         os.system('cls')
         print("----------\n|Encrypter|\n----------\n")
-        print("More Secure Mode\nthe message may not contain any special characters.\n")
+        print("More Secure Mode\nthe message may not contain any special characters.\ntype twice the last letter of your message\n")
         message = input("message: ")
         if len(message) >= 10:
             temp3 = 1
@@ -270,7 +265,10 @@ elif temp == "4":
         print("generating.")
         time.sleep(temp3)
         os.system('cls')
-        try: 
+        try:
+            for element in message:
+                if element in code or element == " ":
+                    print(""+1)
             message = ' '.join(format(ord(x), 'b') for x in message)
             for lettre in message:
                 temp = data_encoded.get(lettre)
@@ -296,7 +294,7 @@ elif temp == "4":
             input("\n> (quit)")
 
 
-
+    #Decode
     elif temp == "2":
         os.system('cls')
         print("----------\n|Encrypter|\n----------\n")
@@ -315,9 +313,10 @@ elif temp == "4":
         try:
             for lettre in encoded_message:
                 temp = data_decoded.get(lettre)
-                if lettre not in code or lettre not in codel:
-                    message = message + temp
-            v2 = ''.join(chr(int(message[i*8:i*8+8],2)) for i in range(len(message)//8))
+                if lettre not in code:
+                    if lettre not in codel:
+                        message = message + temp
+            message2 = ''.join(chr(int(message[i*8:i*8+8],2)) for i in range(len(message)//8))
             print("decoding..")
             time.sleep(temp3)
             os.system('cls')
@@ -326,18 +325,13 @@ elif temp == "4":
             time.sleep(temp3)
             os.system('cls')
             print("----------\n|Encrypter|\n----------\n")
-            print("\nmessage:", message)
+            print("\nmessage:", message2)
             input("\n> (quit)")          
         except:
             print("\nError, Unable to decrypt the message...")
             input("\n> (quit)")
 
-
-
-
-
-
-        
+  
     else:
         quit
     
