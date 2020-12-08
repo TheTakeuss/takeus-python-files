@@ -272,7 +272,7 @@ while True:
         if temp == "1":
             os.system('cls')
             print("----------\n|Encrypter|\n----------\n")
-            print("More Secure Mode\nthe message may not contain any special characters.\ntype twice the last letter of your message\n")
+            print("More Secure Mode\nthe message may not contain any special characters or number.\ntype twice the last letter of your message\n")
             message = input("message: ")
             if len(message) >= 10:
                 temp2 = 1
@@ -285,6 +285,7 @@ while True:
             time.sleep(temp2)
             os.system('cls')
             try:
+                message2 = ""
                 for element in message:
                     if element in code or element == " ":
                         print(""+1)
@@ -305,9 +306,12 @@ while True:
                 os.system('cls')
                 time.sleep(temp2)
                 os.system('cls')
-                print("----------\n|Encrypter|\n----------\n")
-                print("result:", encoded_message)
-                input("\n> (quit)")
+                if gui == True:
+                    event, values = sg.Window('Encrypter - Encode (More Secure Mode)', [[sg.Text("result: ")],[sg.Input(encoded_message)],[sg.Button('Ok')]]).read(close=True)
+                else:
+                    print("----------\n|Encrypter|\n----------\n")
+                    print("result:", encoded_message)
+                    input("\n> (quit)")
             except:
                 print("\nError, Invalid character(s) detected...")
                 input("\n> (quit)")
@@ -330,6 +334,8 @@ while True:
             time.sleep(temp2)
             os.system('cls')
             try:
+                message = ""
+                message2 = ""
                 for lettre in encoded_message:
                     temp = data_decoded.get(lettre)
                     if lettre not in code:
@@ -343,9 +349,12 @@ while True:
                 os.system('cls')
                 time.sleep(temp2)
                 os.system('cls')
-                print("----------\n|Encrypter|\n----------\n")
-                print("\nmessage:", message2)
-                input("\n> (quit)")          
+                if gui == True:
+                    event, values = sg.Window('Encrypter - Decode (More Secure Mode)', [[sg.Text("Message: ")],[sg.Input(message2)],[sg.Button('Ok')]]).read(close=True)
+                else:
+                    print("----------\n|Encrypter|\n----------\n")
+                    print("\nmessage:", message2)
+                    input("\n> (quit)")          
             except:
                 print("\nError, Unable to decrypt the message...")
                 input("\n> (quit)")
