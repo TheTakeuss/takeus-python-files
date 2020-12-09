@@ -4,10 +4,10 @@ from random import randint
 try:
     import PySimpleGUI as sg
     gui = True
-    sg.theme('SystemDefault') 
+    sg.theme('DefaultNoMoreNagging') 
 except:
     os.system('cls')
-    print("Failed to load 'PySimpleGUI', please install it for better exeperience\n\ncopy and paste in 'cmd': pip install PySimpleGUI\n")
+    print("Failed to load 'PySimpleGUI', please install it for better experience (GUI)\n\ncopy and paste in 'cmd': pip install PySimpleGUI\n")
     input("> (skip) ")
     gui = False
 
@@ -182,22 +182,26 @@ codel = ["A", "g", "K", "P", "d", "P", "Z",  "r", "o", "h", "s", "l", "g", "v"]
 while True:
     os.system('cls')
     print("----------\n|Encrypter|\n----------\n")
-    print("1 - Encode\n2 - Decode\n3 - quit\n")
+    print("1 - Encode\n2 - Decode\n3 - About\n4 - quit\n")
     temp = input("> ")
+
+
+    #Encode
     if temp == "1":
-        os.system('cls')
-        print("----------\n|Encrypter|\n----------\n")
-        message = input("message: ")
-        if len(message) >= 10:
-            temp2 = 1
-        elif len(message) >= 6:
-            temp2 = 0.5
+        if gui == True:
+            layout = [ [sg.Text('Your message: ')],[sg.Input()],[sg.OK()] ]
+            window = sg.Window('Encrypter - Encode', layout)
+            event, values = window.read()
+            window.close()
+            message = values[0]
         else:
-            temp2 = 0.25
-        os.system('cls')
-        print("generating.")
-        time.sleep(1)
-        os.system('cls')
+            os.system('cls')
+            print("----------\n|Encrypter|\n----------\n")
+            message = input("message: ")
+            os.system('cls')
+            print("Encoding.")
+            time.sleep(1)
+            os.system('cls')
         try:
             temp = ""
             encoded_message = ""
@@ -209,14 +213,23 @@ while True:
                     encoded_message = encoded_message + temp
                 else:
                     encoded_message = encoded_message + temp
+            
+            #GUI LOADING
             if gui == True:
-                for i in range(1,200):
-                    sg.one_line_progress_meter('Encoding...', i+1, 200, 'Encoding', 'Encoding...')
+                layout = [[sg.Text('Encoding...')],[sg.ProgressBar(200, orientation='h', size=(20, 20), key='progressbar')],[sg.Cancel()]]
+                window = sg.Window('Encrypter - Encode', layout)
+                progress_bar = window['progressbar']
+                for i in range(200):
+                    event, values = window.read(timeout=10)
+                    if event == 'Cancel'  or event == sg.WIN_CLOSED:
+                        break
+                    progress_bar.UpdateBar(i + 1)
+                window.close()
             else:
-                print("generating..")
+                print("Encoding..")
                 time.sleep(1)
                 os.system('cls')
-                print("generating...")
+                print("Encoding...")
                 os.system('cls')
                 time.sleep(1)
                 os.system('cls')
@@ -227,22 +240,28 @@ while True:
                 print("result:", encoded_message)
                 input("\n> (quit)")
         except:
-            print("\nError, Invalid character(s) detected...")
-            input("\n> (quit)")
+            if gui == True:
+                sg.popup_error('Error, Invalid character(s) detected...')
+            else:
+                print("\nError, Invalid character(s) detected...")
+                input("\n> (quit)")
 
+
+    #Decode
     elif temp == "2":
-        os.system('cls')
-        encoded_message = input("Encoded Message: ")
-        if len(encoded_message) >= 15:
-            temp2 = 1
-        elif len(encoded_message) >= 10:
-            temp2 = 0.5
+        if gui == True:
+            layout = [ [sg.Text('Encoded Message: ')],[sg.Input()],[sg.OK()] ]
+            window = sg.Window('Encrypter - Decode', layout)
+            event, values = window.read()
+            window.close()
+            encoded_message = values[0]
         else:
-            temp2 = 0.25
-        os.system('cls')
-        print("decoding.")
-        time.sleep(1)
-        os.system('cls')
+            os.system('cls')
+            encoded_message = input("Encoded Message: ")
+            os.system('cls')
+            print("decoding.")
+            time.sleep(1)
+            os.system('cls')
         try:
             message = ""
             temp = ""
@@ -250,9 +269,18 @@ while True:
                 temp = data_decoded.get(lettre)
                 if lettre not in code:
                     message = message + temp
+
+            #GUI LOADING
             if gui == True:
-                for i in range(1,200):
-                    sg.one_line_progress_meter('Decoding...', i+1, 200, 'Decoding', 'Decoding...')
+                layout = [[sg.Text('Decoding...')],[sg.ProgressBar(200, orientation='h', size=(20, 20), key='progressbar')],[sg.Cancel()]]
+                window = sg.Window('Encrypter - Decode', layout)
+                progress_bar = window['progressbar']
+                for i in range(200):
+                    event, values = window.read(timeout=10)
+                    if event == 'Cancel'  or event == sg.WIN_CLOSED:
+                        break
+                    progress_bar.UpdateBar(i + 1)
+                window.close()
             else:
                 print("decoding..")
                 time.sleep(1)
@@ -268,8 +296,24 @@ while True:
                 print("\nmessage:", message)
                 input("\n> (quit)")          
         except:
-            print("\nError, Unable to decrypt the message...")
-            input("\n> (quit)")
+            if gui == True:
+                sg.popup_error('Error, Unable to decrypt the message...')
+            else:
+                print("\nError, Unable to decrypt the message...")
+                input("\n> (quit)")
+
+
+    elif temp == "3":
+        if gui == True:
+            event, values = sg.Window('Encrypter - About', [[sg.Text("Takeus in 2020")], [sg.Text("Module: OS, RANDOM, TIME, PYSIMPLEGUI")],[sg.Button('Ok')]]).read(close=True)
+        else:
+            os.system('cls')
+            print("----------\n|Encrypter|\n----------\n")
+            print("Takeus\n2020\n\nModule: OS, RANDOM, TIME, PYSIMPLEGUI\n")
+            input("> (menu) ")
+            
+
+        
         
     else:
         break
