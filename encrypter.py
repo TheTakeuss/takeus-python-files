@@ -180,10 +180,18 @@ codel = ["A", "g", "K", "P", "d", "P", "Z",  "r", "o", "h", "s", "l", "g", "v"]
 
 #Programme
 while True:
-    os.system('cls')
-    print("----------\n|Encrypter|\n----------\n")
-    print("1 - Encode\n2 - Decode\n3 - About\n4 - quit\n")
-    temp = input("> ")
+    if gui == True:
+        frame_layout = [[sg.Text('1 - Encode')],[sg.Text('2 - Decode')],[sg.Text('3 - About')],[sg.Text('4 - Quit')],[sg.Input('1 or 2 or 3')]]
+        layout = [[sg.Frame('Menu', frame_layout, font='Any 12', title_color='blue')],[sg.Ok()]]
+        window = sg.Window('Encrypter - Menu', layout, font=("Helvetica", 12))
+        event, values = window.read()
+        window.close()
+        temp = values[0]
+    else:
+        os.system('cls')
+        print("----------\n|Encrypter|\n----------\n")
+        print("1 - Encode\n2 - Decode\n3 - About\n4 - quit\n")
+        temp = input("> ")
 
 
     #Encode
