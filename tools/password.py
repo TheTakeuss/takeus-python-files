@@ -55,77 +55,83 @@ while True:             # Event Loop
 
     try:
         long = int(long)
-        for passw in range(long):
+        while True:
+            for passw in range(long):
 
-            # SPECIAL
-            if opt1 == True and opt2 == False and opt3 == False:
-                temp = randint(0,2)
-                if temp == 1:
-                    password = password + Caraspe[randint(0, len(Caraspe) - 1)]
-                else:
-                    password = password + lettre[randint(0, len(lettre) - 1)]
-            
-            # SPECIAL + MAJ
-            if opt1 == True and opt2 == False and opt3 == True:
-                temp = randint(0,3)
-                if temp == 1:
-                    password = password + Caraspe[randint(0, len(Caraspe) - 1)]
-                elif temp == 2:
-                    password = password + lettrem[randint(0, len(lettrem) - 1)]
-                else:
-                    password = password + lettre[randint(0, len(lettre) - 1)]
-            
-            # SPECIAL + NUMBER
-            if opt1 == True and opt2 == True and opt3 == False:
-                temp = randint(0,3)
-                if temp == 1:
-                    password = password + Caraspe[randint(0, len(Caraspe) - 1)]
-                elif temp == 2:
-                    password = password + nombre[randint(0, len(nombre) - 1)]
-                else:
-                    password = password + lettre[randint(0, len(lettre) - 1)]
-            
-            # SPECIAL + NUMBER + MAJ
-            if opt1 == True and opt2 == True and opt3 == True:
-                temp = randint(0,4)
-                if temp == 1:
-                    password = password + Caraspe[randint(0, len(Caraspe) - 1)]
-                elif temp == 2:
-                    password = password + nombre[randint(0, len(nombre) - 1)]
-                elif temp == 3:
-                    password = password + lettrem[randint(0, len(lettrem) - 1)]
-                else:
+                # SPECIAL
+                if opt1 == True and opt2 == False and opt3 == False:
+                    temp = randint(0,2)
+                    if temp == 1:
+                        password = password + Caraspe[randint(0, len(Caraspe) - 1)]
+                    else:
+                        password = password + lettre[randint(0, len(lettre) - 1)]
+                
+                # SPECIAL + MAJ
+                if opt1 == True and opt2 == False and opt3 == True:
+                    temp = randint(0,3)
+                    if temp == 1:
+                        password = password + Caraspe[randint(0, len(Caraspe) - 1)]
+                    elif temp == 2:
+                        password = password + lettrem[randint(0, len(lettrem) - 1)]
+                    else:
+                        password = password + lettre[randint(0, len(lettre) - 1)]
+                
+                # SPECIAL + NUMBER
+                if opt1 == True and opt2 == True and opt3 == False:
+                    temp = randint(0,3)
+                    if temp == 1:
+                        password = password + Caraspe[randint(0, len(Caraspe) - 1)]
+                    elif temp == 2:
+                        password = password + nombre[randint(0, len(nombre) - 1)]
+                    else:
+                        password = password + lettre[randint(0, len(lettre) - 1)]
+                
+                # SPECIAL + NUMBER + MAJ
+                if opt1 == True and opt2 == True and opt3 == True:
+                    temp = randint(0,4)
+                    if temp == 1:
+                        password = password + Caraspe[randint(0, len(Caraspe) - 1)]
+                    elif temp == 2:
+                        password = password + nombre[randint(0, len(nombre) - 1)]
+                    elif temp == 3:
+                        password = password + lettrem[randint(0, len(lettrem) - 1)]
+                    else:
+                        password = password + lettre[randint(0, len(lettre) - 1)]
+
+                # NUMBER
+                if opt1 == False and opt2 == True and opt3 == False:
+                    temp = randint(0,2)
+                    if temp == 1:
+                        password = password + nombre[randint(0, len(nombre) - 1)]
+                    else:
+                        password = password + lettre[randint(0, len(lettre) - 1)]
+                
+                # NUMBER + MAJ
+                if opt1 == False and opt2 == True and opt3 == True:
+                    temp = randint(0,3)
+                    if temp == 1:
+                        password = password + nombre[randint(0, len(nombre) - 1)]
+                    elif temp == 2:
+                        password = password + lettrem[randint(0, len(lettrem) - 1)]
+                    else:
+                        password = password + lettre[randint(0, len(lettre) - 1)]
+                
+                # MAJ
+                if opt1 == False and opt2 == False and opt3 == True:
+                    temp = randint(0,2)
+                    if temp == 1:
+                        password = password + lettrem[randint(0, len(lettrem) - 1)]
+                    else:
+                        password = password + lettre[randint(0, len(lettre) - 1)]
+
+                # JUST LOWER LETTER
+                if opt1 == False and opt2 == False and opt3 == False:
                     password = password + lettre[randint(0, len(lettre) - 1)]
 
-            # NUMBER
-            if opt1 == False and opt2 == True and opt3 == False:
-                temp = randint(0,2)
-                if temp == 1:
-                    password = password + nombre[randint(0, len(nombre) - 1)]
-                else:
-                    password = password + lettre[randint(0, len(lettre) - 1)]
-            
-            # NUMBER + MAJ
-            if opt1 == False and opt2 == True and opt3 == True:
-                temp = randint(0,3)
-                if temp == 1:
-                    password = password + nombre[randint(0, len(nombre) - 1)]
-                elif temp == 2:
-                    password = password + lettrem[randint(0, len(lettrem) - 1)]
-                else:
-                    password = password + lettre[randint(0, len(lettre) - 1)]
-            
-            # MAJ
-            if opt1 == False and opt2 == False and opt3 == True:
-                temp = randint(0,2)
-                if temp == 1:
-                    password = password + lettrem[randint(0, len(lettrem) - 1)]
-                else:
-                    password = password + lettre[randint(0, len(lettre) - 1)]
+            if len(password) == long:
+                break
 
-            # JUST LOWER LETTER
-            if opt1 == False and opt2 == False and opt3 == False:
-                password = password + lettre[randint(0, len(lettre) - 1)]
+            
 
     except:
         print("error")
