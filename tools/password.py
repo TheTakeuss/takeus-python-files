@@ -24,19 +24,22 @@ password = ""
 
 
 frame_layout = [
-    [sg.Text('Lenght: '), sg.Input('8')],
+    [sg.Slider(range=(6,32), default_value=8, orientation='horizontal')],
     [sg.Text('Numbers: '), sg.Checkbox('', default=True)],
     [sg.Text('uppercase: '), sg.Checkbox('', default=True)],
     [sg.Text('Special characters: '), sg.Checkbox('', default=True)]
 
     ]
+frame_layout2 = [
+    [sg.Button('Generate'), sg.Button('Quit')],
 
-layout = [
-    [sg.Frame('Password Generator', frame_layout, font='Any 12', title_color='blue')],
-    [sg.Text('Password: '),sg.Input('', key='passwordf')],
-    [sg.Button('Generate'), sg.Button('Quit')]
+
     ]
 
+layout = [
+    [sg.Frame('Password Settings', frame_layout, font='Any 12', title_color='blue'), sg.Frame('Password Menu', frame_layout2, font='Any 12', title_color='blue')],
+    [sg.Text('Password: '),sg.Input('', key='passwordf', size=(34,15))],
+    ]
 
 window = sg.Window('Password Generator', layout, font=("Helvetica", 12))
 
