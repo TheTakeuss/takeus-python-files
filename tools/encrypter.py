@@ -181,12 +181,24 @@ codel = ["A", "g", "K", "P", "d", "P", "Z",  "r", "o", "h", "s", "l", "g", "v"]
 #Programme
 while True:
     if gui == True:
-        frame_layout = [[sg.Text('1 - Encode')],[sg.Text('2 - Decode')],[sg.Text('3 - About')],[sg.Text('4 - Quit')],[sg.Input('1 or 2 or 3')]]
-        layout = [[sg.Frame('Menu', frame_layout, font='Any 12', title_color='blue')],[sg.Ok()]]
+        frame_layout = [
+            [sg.Button('Encode'), sg.Button('Decode'), sg.Button('About'), sg.Button('Quit')]
+            ]
+        layout = [[sg.Frame('Menu', frame_layout, font='Any 12', title_color='blue')]]
         window = sg.Window('Encrypter - Menu', layout, font=("Helvetica", 12))
         event, values = window.read()
+        print(event, values)
         window.close()
-        temp = values[0]
+        if event == "Encode":
+            temp = "1"
+        elif event == "Decode":
+            temp = "2"
+        elif event == "About":
+            temp = "3"
+        elif event == "Quit":
+            temp = "4"
+
+        
     else:
         os.system('cls')
         print("----------\n|Encrypter|\n----------\n")
@@ -242,7 +254,7 @@ while True:
                 time.sleep(1)
                 os.system('cls')
             if gui == True:
-            event, values = sg.Window('Encrypter - Encode', [[sg.Text("Result: ")],[sg.Input(encoded_message)],[sg.Button('Ok')]]).read(close=True)
+                event, values = sg.Window('Encrypter - Encode', [[sg.Text("Result: ")],[sg.Input(encoded_message)],[sg.Button('Ok')]]).read(close=True)
             else:
                 print("----------\n|Encrypter|\n----------\n")
                 print("result:", encoded_message)
@@ -313,7 +325,7 @@ while True:
 
     elif temp == "3":
         if gui == True:
-            event, values = sg.Window('Encrypter - About', [[sg.Text("Takeus in 2020")], [sg.Text("Module: OS, RANDOM, TIME, PYSIMPLEGUI")],[sg.Button('Ok')]]).read(close=True)
+            event, values = sg.Window('Encrypter - About', [[sg.Text("Takeus / 2020")], [sg.Text("Module: OS, RANDOM, TIME, PYSIMPLEGUI")],[sg.Button('Ok')]]).read(close=True)
         else:
             os.system('cls')
             print("----------\n|Encrypter|\n----------\n")
