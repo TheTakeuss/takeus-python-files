@@ -1,7 +1,7 @@
 import os
 from random import randint
 try:
-    import PySimpleGUIi as sg
+    import PySimpleGUI as sg
     gui = True
     sg.theme('DefaultNoMoreNagging') 
 except:
