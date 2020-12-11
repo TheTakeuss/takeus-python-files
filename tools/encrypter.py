@@ -1,4 +1,3 @@
-# Ce fichier provient de base d'un autre repo "some python files" (moi), puis mit ici
 import os
 import time
 from random import randint
