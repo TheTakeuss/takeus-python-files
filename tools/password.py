@@ -6,7 +6,7 @@ try:
 except:
     os.system('cls')
     print("Failed to load 'PySimpleGUI', please install it for better experience (GUI)\n\ncopy and paste in 'cmd' or 'powershell' or 'terminal': pip install PySimpleGUI\n")
-    input("> (skip) ")
+    input("> (quit) ")
     quit()
 
 temp = ""
